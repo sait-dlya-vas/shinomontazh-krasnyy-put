@@ -1,0 +1,39 @@
+/* Ручные доработки демо (приёмы из копилки). Подключается одной строкой после стилей каркаса и переживает пересборку. */
+
+/* Значок «демо» в шапке – пока владелец не одобрил сайт */
+.demo-badge { margin-left: .7em; padding: .28em .6em .3em; border-radius: 99px; border: 1px solid rgb(var(--acc-rgb) / .6);
+  color: var(--v-accent); font-family: var(--v-font-text); font-size: .62rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; line-height: 1; }
+
+/* Заголовки: не рвать по слогам, строки ровнее */
+h1, h2 { hyphens: manual; -webkit-hyphens: manual; text-wrap: balance; }
+
+/* Рейтинг со ссылкой на Карты – один раз на первом экране */
+.hero__rating { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .35em .6em; margin-top: var(--v-5);
+  color: var(--v-ink); font-size: var(--v-t-sm); text-decoration: none; min-height: 44px; }
+.hero__rating b { font-weight: 700; }
+.hero__rating span:last-child { color: var(--v-ink-soft); text-decoration: underline; text-underline-offset: .2em; }
+.hero__rating:hover span:last-child { color: var(--v-ink); }
+
+/* «Из отзыва» под обещаниями */
+.from-review { display: block; margin-top: .35em; color: var(--v-accent); font-size: .85em; }
+
+/* Варианты цвета кнопками – для показа владельцу, после выбора панель убрать */
+.demo-pal { position: fixed; z-index: 40; left: max(12px, env(safe-area-inset-left)); bottom: max(12px, env(safe-area-inset-bottom));
+  display: flex; align-items: center; gap: .4rem; padding: .35rem .45rem .35rem .8rem; border-radius: 99px;
+  background: rgb(var(--canvas-rgb) / .86); border: 1px solid var(--v-hair-strong, rgb(255 255 255 / .18));
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 8px 24px rgb(0 0 0 / .35);
+  font-family: var(--v-font-text); font-size: .75rem; color: var(--v-ink-soft); }
+.demo-pal button { display: inline-flex; align-items: center; gap: .4em; min-height: 32px; padding: 0 .7em 0 .35em; border-radius: 99px;
+  border: 1px solid transparent; background: none; color: var(--v-ink); font: inherit; cursor: pointer; }
+.demo-pal button i { width: 20px; height: 20px; border-radius: 50%; background: var(--bg);
+  box-shadow: inset 0 0 0 6px var(--bg), inset 0 0 0 20px var(--sw); border: 1px solid rgb(255 255 255 / .25); }
+.demo-pal button[aria-pressed="true"] { border-color: var(--v-accent); }
+.demo-pal button:focus-visible { outline: 2px solid var(--v-accent); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .demo-pal { transition: opacity .25s, transform .25s; }
+  .demo-pal.is-away { opacity: 0; transform: translateY(12px); pointer-events: none; }
+  .demo-pal { font-size: .7rem; padding-left: .6rem; gap: .2rem; }
+  .demo-pal button { padding: 0 .3em; min-width: 36px; min-height: 36px; justify-content: center; }
+  .demo-pal button span { display: none; }
+}
